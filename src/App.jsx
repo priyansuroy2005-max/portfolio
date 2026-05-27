@@ -8,12 +8,24 @@ import {
 export default function PortfolioWebsite() {
   const [loading, setLoading] = useState(true);
   const [currentName, setCurrentName] = useState(0);
-const [fade, setFade] = useState(true);
+  const [fade, setFade] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const [time, setTime] = useState(new Date());
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
+  const interval = setInterval(() => {
+    setProgress((prev) => {
+      if (prev >= 100) {
+        clearInterval(interval);
+        setTimeout(() => setLoading(false), 500);
+        return 100;
+      }
+      return prev + 1;
+    });
+  }, 30);
+
+  return () => clearInterval(interval);
+}, []);
   useEffect(() => {
   const interval = setInterval(() => {
     setFade(false);
@@ -23,8 +35,14 @@ const [fade, setFade] = useState(true);
       setFade(true);
     }, 1000);
   }, 3000);
-
   return () => clearInterval(interval);
+}, []);
+  useEffect(() => {
+  const timer = setInterval(() => {
+    setTime(new Date());
+  }, 1000);
+
+  return () => clearInterval(timer);
 }, []);
 const names = [
   "PRIYANSU ROY",
@@ -73,36 +91,63 @@ const names = [
   ];
 
   if (loading) {
-    return (
-      <div className="h-screen bg-black flex items-center justify-center overflow-hidden relative text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(34,211,238,0.2),transparent_40%)]"></div>
+  return (
+    <div className="fixed inset-0 bg-black flex items-center justify-center z-50 overflow-hidden">
 
-        <div className="relative flex flex-col items-center z-10">
-          <div className="relative w-52 h-52 flex items-center justify-center">
-            <div className="absolute inset-0 rounded-full border border-cyan-400/20 animate-ping"></div>
-            <div className="absolute inset-4 rounded-full border-2 border-dashed border-cyan-300 animate-spin"></div>
-            <div className="absolute inset-10 rounded-full border border-cyan-400 animate-[spin_10s_linear_infinite_reverse]"></div>
+      <div className="relative w-40 h-40 flex items-center justify-center">
 
-            <div className="w-24 h-24 rounded-full bg-cyan-300 shadow-[0_0_60px_rgba(34,211,238,0.9)] flex items-center justify-center animate-pulse">
-              <span className="text-black text-2xl font-black">PR</span>
-            </div>
-          </div>
+        <div className="absolute w-40 h-40 rounded-full border-4 border-cyan-400/20"></div>
 
-          <h1 className="text-6xl md:text-7xl font-black leading-tight mb-6">
-            PRIYANSU
-            </h1>
+        <div className="absolute w-40 h-40 rounded-full border-t-4 border-cyan-300 animate-spin shadow-[0_0_60px_rgba(34,211,238,0.9)]"></div>
 
-          <p className="mt-5 text-cyan-300/70 uppercase tracking-[0.4em] text-sm">
-            Loading Portfolio Experience
-          </p>
+        <div className="absolute w-24 h-24 bg-cyan-400/20 blur-3xl rounded-full"></div>
+
+        <div className="text-cyan-300 text-3xl font-bold tracking-widest z-10">
+          {progress}%
         </div>
+
       </div>
-    );
-  }
+
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen bg-[#050505] text-white overflow-hidden relative font-sans animate-[revealPage_1.4s_ease]">
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.05)_1px,transparent_1px)] bg-[size:70px_70px]"></div>
+      <div className="relative w-full h-[30vh] overflow-hidden">
+
+  {/* Space Image */}
+  <img
+    src="/blackhole.jpg"
+    alt="blackhole"
+    className="w-full h-full object-cover"
+  />
+
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/40"></div>
+
+  {/* LIVE CLOCK */}
+  <div className="absolute top-6 left-6 z-20 text-cyan-300">
+
+    <h2 className="text-2xl md:text-4xl font-bold tracking-widest drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">
+      {time.toLocaleTimeString()}
+    </h2>
+
+    <p className="text-sm md:text-lg uppercase tracking-[0.3em] text-cyan-400/80 mt-2">
+      {time.toDateString()}
+    </p>
+
+    <p className="text-xs md:text-sm tracking-[0.2em] text-cyan-500/70 mt-1">
+      KOLKATA, IN
+    </p>
+
+  </div>
+
+  {/* Bottom Fade */}
+  <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-b from-transparent to-[#050505]"></div>
+
+</div>
 
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-cyan-400/10">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-center gap-10 uppercase tracking-[0.2em] text-sm">
