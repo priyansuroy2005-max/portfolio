@@ -11,6 +11,7 @@ export default function PortfolioWebsite() {
   const [fade, setFade] = useState(true);
   const [progress, setProgress] = useState(0);
   const [time, setTime] = useState(new Date());
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
   const interval = setInterval(() => {
@@ -43,6 +44,15 @@ export default function PortfolioWebsite() {
   }, 1000);
 
   return () => clearInterval(timer);
+}, []);
+useEffect(() => {
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => window.removeEventListener("scroll", handleScroll);
 }, []);
 const names = [
   "প্রিয়াংশু রায়",
@@ -114,8 +124,22 @@ const names = [
 
   return (
     <div className="min-h-screen bg-[#050505] text-white overflow-hidden relative font-sans animate-[revealPage_1.4s_ease]">
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.05)_1px,transparent_1px)] bg-[size:70px_70px]"></div>
-      <div className="relative w-full h-[30vh] overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
+
+  {/* Grid */}
+  <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.05)_1px,transparent_1px)] bg-[size:70px_70px]"></div>
+
+  {/* Moving Glow */}
+  <div
+    className="absolute left-0 w-full h-[500px] bg-cyan-400/10 blur-3xl pointer-events-none transition-all duration-300"
+    style={{
+      top: `${scrollY}px`,
+    }}
+  ></div>
+
+</div>
+
+      <div className="relative w-full h-[25vh] md:h-[35vh] overflow-hidden">
 
   {/* Space Image */}
   <img
@@ -150,7 +174,7 @@ const names = [
 </div>
 
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-cyan-400/10">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex justify-center gap-10 uppercase tracking-[0.2em] text-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-wrap justify-center gap-4 md:gap-10 uppercase tracking-[0.2em] text-xs sm:text-sm">
           {['Home','Projects','Skills','About','Contact'].map((item) => (
             <button
               key={item}
@@ -167,14 +191,14 @@ const names = [
         </div>
       </nav>
 
-      <section id="home" className="relative z-10 max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
+      <section id="home" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
         <div>
           <p className="uppercase tracking-[0.3em] text-cyan-300 text-sm mb-5">
             3D Artist & Generalist
           </p>
           
           <h1
-  className={`text-6xl md:text-7xl font-black leading-tight mb-6 text-cyan-300 transition-all duration-1000 ${
+  className={`text-4xl sm:text-5xl md:text-7xl font-black leading-tight mb-6 text-cyan-300 transition-all duration-1000 ${
     fade
       ? "opacity-100 translate-y-0"
       : "opacity-0 -translate-y-10"
@@ -187,7 +211,7 @@ const names = [
             I’m Priyansu Roy, a passionate 3D Artist and Multimedia Designer specializing in cinematic product visualization, environment art, and digital storytelling. With a strong eye for lighting, composition, and realism, I create visually immersive experiences that blend creativity with technical precision. My workflow focuses on delivering high-quality renders, futuristic concepts, and professional visual experiences inspired by modern games, films, and digital art.
           </p>
 
-          <div className="flex flex-wrap gap-5">
+          <div className="flex flex-col sm:flex-row gap-5">
             <a
               href="https://www.youtube.com"
               target="_blank"
@@ -215,7 +239,7 @@ const names = [
           <img
             src="/priyansu.png"
             alt="Priyansu Roy"
-            className="relative w-[320px] md:w-[380px] h-[420px] object-cover rounded-[30px] border border-cyan-400/20 shadow-[0_0_50px_rgba(34,211,238,0.25)] hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500"
+            className="relative w-[250px] sm:w-[320px] md:w-[380px] h-[420px] object-cover rounded-[30px] border border-cyan-400/20 shadow-[0_0_50px_rgba(34,211,238,0.25)] hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500"
           />
         </div>
       </section>
@@ -225,7 +249,7 @@ const names = [
           Explore My Work
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project) => (
             <a
               key={project.title}
@@ -266,7 +290,7 @@ const names = [
     My Skills
   </h2>
 
-  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
     <div className="p-8 rounded-3xl border border-cyan-400/20 bg-black/60 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(34,211,238,0.35)] transition-all duration-500">
       <h3 className="text-2xl font-semibold text-cyan-300 mb-3">
@@ -338,7 +362,7 @@ const names = [
           Available for freelance projects, internships, collaborations, and creative opportunities.
         </p>
 
-        <div className="flex justify-center flex-wrap gap-5">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
           <a
             href="mailto:priyansuroy2005@gmail.com"
             className="px-8 py-4 rounded-2xl bg-cyan-400 text-black font-bold hover:scale-110 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(34,211,238,0.7)] transition-all duration-500"
@@ -369,7 +393,7 @@ const names = [
     Connect With Me
   </h2>
 
-  <div className="flex justify-center gap-6 flex-wrap">
+  <div className="flex justify-center gap-4 sm:gap-6 flex-wrap px-4">
 
     <a
       href="https://www.instagram.com/world_of_vertex?igsh=MTM4NzAyNDZpMnp5ZA=="
