@@ -355,9 +355,9 @@ const names = [
             ArtStation
           </a>
           <a
-  href="/Priyansu_Roy_CV.pdf"
-  download
-  className="px-8 py-4 rounded-2xl border border-cyan-400/30 bg-cyan-400/10 hover:bg-cyan-400 hover:text-black hover:scale-110 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(34,211,238,0.7)] transition-all duration-500"
+          href="/Priyansu_Roy_CV.pdf"
+          download
+          className="px-8 py-4 rounded-2xl border border-cyan-400/30 bg-cyan-400/10 hover:bg-cyan-400 hover:text-black hover:scale-110 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(34,211,238,0.7)] transition-all duration-500"
 >
   ⬇ Download CV
 </a>
