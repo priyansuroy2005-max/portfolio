@@ -131,11 +131,22 @@ const names = [
 
   {/* Moving Glow */}
   <div
-    className="absolute left-0 w-full h-[500px] bg-cyan-400/10 blur-3xl pointer-events-none transition-all duration-300"
-    style={{
-      top: `${scrollY}px`,
-    }}
-  ></div>
+  className="absolute left-0 w-full h-[500px] pointer-events-none transition-all duration-300"
+  style={{
+    top: `${scrollY}px`,
+    background: `
+      linear-gradient(
+        to bottom,
+        transparent,
+        rgba(34,211,238,0.15),
+        rgba(34,211,238,0.25),
+        rgba(34,211,238,0.15),
+        transparent
+      )
+    `,
+    filter: "blur(80px)",
+  }}
+></div>
 
 </div>
 
