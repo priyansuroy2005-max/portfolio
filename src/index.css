@@ -12,3 +12,6 @@
     filter: blur(0);
   }
 }
+* {
+  cursor: none !important;
+}

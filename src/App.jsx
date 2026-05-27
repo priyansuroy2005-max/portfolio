@@ -12,6 +12,10 @@ export default function PortfolioWebsite() {
   const [progress, setProgress] = useState(0);
   const [time, setTime] = useState(new Date());
   const [scrollY, setScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({
+  x: 0,
+  y: 0,
+});
 
   useEffect(() => {
   const interval = setInterval(() => {
@@ -53,6 +57,20 @@ useEffect(() => {
   window.addEventListener("scroll", handleScroll);
 
   return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+useEffect(() => {
+  const handleMouseMove = (e) => {
+    setMousePosition({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
+
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+  };
 }, []);
 const names = [
   "প্রিয়াংশু রায়",
@@ -123,12 +141,25 @@ const names = [
 }
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white overflow-hidden relative font-sans animate-[revealPage_1.4s_ease]">
+    <div className="min-h-screen bg-[#050505] text-white overflow-hidden relative font-sans animate-[revealPage_1.4s_ease] cursor-none">
       <div className="absolute inset-0 overflow-hidden">
 
   {/* Grid */}
   <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.05)_1px,transparent_1px)] bg-[size:70px_70px]"></div>
-
+<div
+  className="fixed pointer-events-none z-[9999] rounded-full border border-cyan-300/30 backdrop-blur-md"
+  style={{
+    left: mousePosition.x - 20,
+    top: mousePosition.y - 20,
+    width: "40px",
+    height: "40px",
+    background:
+      "radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(34,211,238,0.12) 40%, rgba(255,255,255,0.05) 70%)",
+    boxShadow:
+      "0 0 25px rgba(34,211,238,0.45), inset 0 0 12px rgba(255,255,255,0.12)",
+    transition: "transform 0.06s linear",
+  }}
+></div>
   {/* Moving Glow */}
   <div
   className="absolute left-0 w-full h-[500px] pointer-events-none transition-all duration-300"
