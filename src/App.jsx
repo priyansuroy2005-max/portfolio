@@ -141,7 +141,7 @@ const names = [
 }
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white overflow-hidden relative font-sans animate-[revealPage_1.4s_ease] cursor-none">
+    <div className="min-h-screen bg-[#050505] text-white overflow-hidden relative font-sans animate-[cardFlip_1.5s_cubic-bezier(0.22,1,0.36,1)]">
       <div className="absolute inset-0 overflow-hidden">
 
   {/* Grid */}
