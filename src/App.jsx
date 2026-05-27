@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import {
+  FaInstagram,
+  FaLinkedin,
+  FaFacebook,
+} from "react-icons/fa";
 
 export default function PortfolioWebsite() {
   const [loading, setLoading] = useState(true);
@@ -14,31 +18,37 @@ export default function PortfolioWebsite() {
       title: "Rolex Daytona",
       category: "Product Design",
       image: "/rolex.jpg",
+      link: "https://www.artstation.com/artwork/mAJnYv",
     },
     {
       title: "Vintage Study Room",
       category: "Game Environment Art",
       image: "/interior.jpg",
+      link: "https://www.artstation.com/artwork/8BYyvw",
     },
     {
       title: "Forgotten Signal",
       category: "Game Props Design",
       image: "/traffic.jpg",
+      link: "https://www.artstation.com/artwork/8B0A0O",
     },
     {
       title: "The Curious Bot",
       category: "Character Design",
       image: "/robot.jpg",
+      link: "https://www.artstation.com/artwork/Bk0A0A",
     },
     {
       title: "Old Village Shop",
       category: "Game Environment Art",
       image: "/shop.jpg",
+      link: "https://www.artstation.com/artwork/oJY1Zq",
     },
     {
       title: "Event Horizon",
       category: "VFX Stuff",
       image: "/blackhole.jpg",
+      link: "https://www.artstation.com/artwork/AZxnJN",
     },
   ];
 
@@ -58,14 +68,9 @@ export default function PortfolioWebsite() {
             </div>
           </div>
 
-          <motion.h1
-  initial={{ opacity: 0, y: 100 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1 }}
-  className="text-6xl md:text-7xl font-black leading-tight mb-6"
->
-  PRIYANSU
-</motion.h1>
+          <h1 className="text-6xl md:text-7xl font-black leading-tight mb-6">
+            PRIYANSU
+            </h1>
 
           <p className="mt-5 text-cyan-300/70 uppercase tracking-[0.4em] text-sm">
             Loading Portfolio Experience
@@ -76,7 +81,7 @@ export default function PortfolioWebsite() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white overflow-hidden relative font-sans">
+    <div className="min-h-screen bg-[#050505] text-white overflow-hidden relative font-sans animate-[revealPage_1.4s_ease]">
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.05)_1px,transparent_1px)] bg-[size:70px_70px]"></div>
 
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-cyan-400/10">
@@ -153,7 +158,7 @@ export default function PortfolioWebsite() {
           {projects.map((project) => (
             <a
               key={project.title}
-              href="https://www.artstation.com/priyansuroy1"
+              href={project.link}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-black/60 hover:scale-105 hover:-translate-y-3 hover:shadow-[0_0_40px_rgba(34,211,238,0.35)] transition-all duration-500 cursor-pointer block"
@@ -182,6 +187,72 @@ export default function PortfolioWebsite() {
           ))}
         </div>
       </section>
+      <section
+  id="skills"
+  className="relative z-10 max-w-7xl mx-auto px-6 py-24"
+>
+  <h2 className="text-center text-5xl font-bold mb-14">
+    My Skills
+  </h2>
+
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <div className="p-8 rounded-3xl border border-cyan-400/20 bg-black/60 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(34,211,238,0.35)] transition-all duration-500">
+      <h3 className="text-2xl font-semibold text-cyan-300 mb-3">
+        Graphic Design
+      </h3>
+      <p className="text-zinc-400">
+        Creative visual design, branding, layouts, and digital artwork.
+      </p>
+    </div>
+
+    <div className="p-8 rounded-3xl border border-cyan-400/20 bg-black/60 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(34,211,238,0.35)] transition-all duration-500">
+      <h3 className="text-2xl font-semibold text-cyan-300 mb-3">
+        3D Modeling
+      </h3>
+      <p className="text-zinc-400">
+        High-quality hard surface and environment modeling workflows.
+      </p>
+    </div>
+
+    <div className="p-8 rounded-3xl border border-cyan-400/20 bg-black/60 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(34,211,238,0.35)] transition-all duration-500">
+      <h3 className="text-2xl font-semibold text-cyan-300 mb-3">
+        Texturing
+      </h3>
+      <p className="text-zinc-400">
+        Realistic and stylized texture creation using modern workflows.
+      </p>
+    </div>
+
+    <div className="p-8 rounded-3xl border border-cyan-400/20 bg-black/60 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(34,211,238,0.35)] transition-all duration-500">
+      <h3 className="text-2xl font-semibold text-cyan-300 mb-3">
+        Lighting
+      </h3>
+      <p className="text-zinc-400">
+        Cinematic lighting setup for realistic and dramatic scenes.
+      </p>
+    </div>
+
+    <div className="p-8 rounded-3xl border border-cyan-400/20 bg-black/60 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(34,211,238,0.35)] transition-all duration-500">
+      <h3 className="text-2xl font-semibold text-cyan-300 mb-3">
+        Rendering
+      </h3>
+      <p className="text-zinc-400">
+        High-quality final renders with strong composition and realism.
+      </p>
+    </div>
+
+    <div className="p-8 rounded-3xl border border-cyan-400/20 bg-black/60 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(34,211,238,0.35)] transition-all duration-500">
+      <h3 className="text-2xl font-semibold text-cyan-300 mb-3">
+        Animation
+      </h3>
+      <p className="text-zinc-400">
+        Smooth animation workflows and cinematic motion presentation.
+      </p>
+    </div>
+
+  </div>
+</section>
 
       <section id="contact" className="relative z-10 max-w-5xl mx-auto px-6 py-24 text-center">
         <p className="uppercase tracking-[0.3em] text-cyan-300 text-sm mb-4">
@@ -214,6 +285,44 @@ export default function PortfolioWebsite() {
           </a>
         </div>
       </section>
+      <section className="relative z-10 py-16 text-center">
+
+  <h2 className="text-4xl font-bold mb-10">
+    Connect With Me
+  </h2>
+
+  <div className="flex justify-center gap-6 flex-wrap">
+
+    <a
+      href="https://www.instagram.com/world_of_vertex?igsh=MTM4NzAyNDZpMnp5ZA=="
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-16 h-16 rounded-2xl border border-cyan-400/20 bg-black/60 flex items-center justify-center text-3xl text-cyan-300 hover:bg-cyan-300 hover:text-black hover:scale-110 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(34,211,238,0.5)] transition-all duration-500"
+    >
+      <FaInstagram />
+    </a>
+
+    <a
+      href="https://www.linkedin.com/in/priyansu-roy-3a4171285/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-16 h-16 rounded-2xl border border-cyan-400/20 bg-black/60 flex items-center justify-center text-3xl text-cyan-300 hover:bg-cyan-300 hover:text-black hover:scale-110 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(34,211,238,0.5)] transition-all duration-500"
+    >
+      <FaLinkedin />
+    </a>
+
+    <a
+      href="https://www.facebook.com/share/1HYJPayPmt/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-16 h-16 rounded-2xl border border-cyan-400/20 bg-black/60 flex items-center justify-center text-3xl text-cyan-300 hover:bg-cyan-300 hover:text-black hover:scale-110 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(34,211,238,0.5)] transition-all duration-500"
+    >
+      <FaFacebook />
+    </a>
+
+  </div>
+
+</section>
 
       <footer className="border-t border-cyan-400/10 py-8 text-center text-cyan-300/70 text-sm">
         © 2026 Priyansu Roy — 3D Artist Portfolio
