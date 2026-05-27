@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function PortfolioWebsite() {
   const [loading, setLoading] = useState(true);
@@ -10,28 +11,34 @@ export default function PortfolioWebsite() {
 
   const projects = [
     {
-      title: "Weapon Design",
-      category: "Sci‑Fi Asset",
-      image:
-        "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop",
+      title: "Rolex Daytona",
+      category: "Product Design",
+      image: "/rolex.jpg",
     },
     {
-      title: "Environment Art",
-      category: "3D Environment",
-      image:
-        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+      title: "Vintage Study Room",
+      category: "Game Environment Art",
+      image: "/interior.jpg",
     },
     {
-      title: "Product Visualization",
-      category: "Cinematic Render",
-      image:
-        "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?q=80&w=1200&auto=format&fit=crop",
+      title: "Forgotten Signal",
+      category: "Game Props Design",
+      image: "/traffic.jpg",
     },
     {
-      title: "Character Sculpt",
-      category: "Digital Sculpt",
-      image:
-        "https://images.unsplash.com/photo-1618005198919-d3d4b5a92eee?q=80&w=1200&auto=format&fit=crop",
+      title: "The Curious Bot",
+      category: "Character Design",
+      image: "/robot.jpg",
+    },
+    {
+      title: "Old Village Shop",
+      category: "Game Environment Art",
+      image: "/shop.jpg",
+    },
+    {
+      title: "Event Horizon",
+      category: "VFX Stuff",
+      image: "/blackhole.jpg",
     },
   ];
 
@@ -51,9 +58,14 @@ export default function PortfolioWebsite() {
             </div>
           </div>
 
-          <h1 className="mt-10 text-5xl md:text-7xl font-black tracking-[0.35em] text-cyan-300 text-center">
-            PRIYANSU
-          </h1>
+          <motion.h1
+  initial={{ opacity: 0, y: 100 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="text-6xl md:text-7xl font-black leading-tight mb-6"
+>
+  PRIYANSU
+</motion.h1>
 
           <p className="mt-5 text-cyan-300/70 uppercase tracking-[0.4em] text-sm">
             Loading Portfolio Experience
