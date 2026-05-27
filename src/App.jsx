@@ -45,8 +45,8 @@ export default function PortfolioWebsite() {
   return () => clearInterval(timer);
 }, []);
 const names = [
-  "PRIYANSU ROY",
   "প্রিয়াংশু রায়",
+  "PRIYANSU ROY",
   "プリヤンス ロイ",
   "프리얀슈 로이",
   "普里扬苏·罗伊",
@@ -213,7 +213,7 @@ const names = [
           <div className="absolute top-10 right-10 w-72 h-72 bg-cyan-400/20 blur-3xl rounded-full"></div>
 
           <img
-            src="/priyansu.jpg"
+            src="/priyansu.png"
             alt="Priyansu Roy"
             className="relative w-[320px] md:w-[380px] h-[420px] object-cover rounded-[30px] border border-cyan-400/20 shadow-[0_0_50px_rgba(34,211,238,0.25)] hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500"
           />
