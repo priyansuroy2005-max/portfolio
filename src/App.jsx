@@ -7,12 +7,32 @@ import {
 
 export default function PortfolioWebsite() {
   const [loading, setLoading] = useState(true);
+  const [currentName, setCurrentName] = useState(0);
+const [fade, setFade] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
   }, []);
+  useEffect(() => {
+  const interval = setInterval(() => {
+    setFade(false);
 
+    setTimeout(() => {
+      setCurrentName((prev) => (prev + 1) % names.length);
+      setFade(true);
+    }, 1000);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, []);
+const names = [
+  "PRIYANSU ROY",
+  "প্রিয়াংশু রায়",
+  "プリヤンス ロイ",
+  "프리얀슈 로이",
+  "普里扬苏·罗伊",
+];
   const projects = [
     {
       title: "Rolex Daytona",
@@ -107,10 +127,16 @@ export default function PortfolioWebsite() {
           <p className="uppercase tracking-[0.3em] text-cyan-300 text-sm mb-5">
             3D Artist & Generalist
           </p>
-
-          <h1 className="text-6xl md:text-7xl font-black leading-tight mb-6">
-            PRIYANSU <span className="text-cyan-300">ROY</span>
-          </h1>
+          
+          <h1
+  className={`text-6xl md:text-7xl font-black leading-tight mb-6 text-cyan-300 transition-all duration-1000 ${
+    fade
+      ? "opacity-100 translate-y-0"
+      : "opacity-0 -translate-y-10"
+  }`}
+>
+  {names[currentName]}
+</h1>
 
           <p className="text-zinc-300 text-lg leading-relaxed max-w-xl mb-10">
             I’m Priyansu Roy, a passionate 3D Artist and Multimedia Designer specializing in cinematic product visualization, environment art, and digital storytelling. With a strong eye for lighting, composition, and realism, I create visually immersive experiences that blend creativity with technical precision. My workflow focuses on delivering high-quality renders, futuristic concepts, and professional visual experiences inspired by modern games, films, and digital art.
@@ -283,6 +309,13 @@ export default function PortfolioWebsite() {
           >
             ArtStation
           </a>
+          <a
+  href="/Priyansu_Roy_CV.pdf"
+  download
+  className="px-8 py-4 rounded-2xl border border-cyan-400/30 bg-cyan-400/10 hover:bg-cyan-400 hover:text-black hover:scale-110 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(34,211,238,0.7)] transition-all duration-500"
+>
+  ⬇ Download CV
+</a>
         </div>
       </section>
       <section className="relative z-10 py-16 text-center">
