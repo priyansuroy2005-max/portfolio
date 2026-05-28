@@ -147,7 +147,7 @@ const names = [
   {/* Grid */}
   <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.05)_1px,transparent_1px)] bg-[size:70px_70px]"></div>
 <div
-  className="fixed pointer-events-none z-[9999] rounded-full border border-cyan-300/30 backdrop-blur-md"
+  className="hidden md:block fixed pointer-events-none z-[9999] rounded-full border border-cyan-300/30 backdrop-blur-xl"
   style={{
     left: mousePosition.x - 20,
     top: mousePosition.y - 20,
